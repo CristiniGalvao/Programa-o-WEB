@@ -31,12 +31,5 @@ public class EntityManagerUtil {
         }
     }
 
-    public static void main(String[] args){
-        try{
-            EntityManagerUtil.getEntityManagerFactory();
-            EntityManagerUtil.closeEntityManagerFactory();
-        }catch(Exception e){
-            System.out.println(e);
-        }
-    }
+
 }

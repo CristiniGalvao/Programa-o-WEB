@@ -8,7 +8,7 @@
         <properties>
         <property name="hibernate.show_sql" value="true"/>
         <property name="hibernate.format_sql" value="true"/>
-        <property name="hibernate.hbn2ddl.auto" value="update"/>
+        <property name="hibernate.hbm2ddl.auto" value="update"/>
 
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/servicecep"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
