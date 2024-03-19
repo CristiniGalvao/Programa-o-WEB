@@ -16,25 +16,18 @@ public class Main {
     public static void main(String[] args){
         try{
             EntityManagerUtil.getEntityManagerFactory();
-
-//            UsuarioDao usuarioDao = new UsuarioDAOImpl(EntityManagerUtil.getManeger());
-//            Usuario usuario = new Usuario();
-//            usuario.setNome("Rafael");
-//            usuario.setLogin("Rafael55");
-//            usuario.setSenha("987654");
-
-            salvarEndereco();
-
+            salvarUsuario();
             //editarUsuario();
            // deletarUsuario();
            // buscarPorID();
            // buscarTodos();
+            //salvarEndereco();
             EntityManagerUtil.closeEntityManagerFactory();
         }catch(Exception e){
             System.out.println(e);
         }
     }
-
+//buscar Todos os usuarios
     private static void buscarTodos() {
         UsuarioDao usuarioDAO = new UsuarioDAOImpl(EntityManagerUtil.getManeger());
         List<Usuario> usuarios = usuarioDAO.findAll();
@@ -44,16 +37,35 @@ public class Main {
 
     }
 
-    private static void buscarPorID() {
-    }
+    public static void buscarUsuarioPorId() {
+        UsuarioDao usuarioDAO = new UsuarioDAOImpl(
+                EntityManagerUtil.getManeger()
+        );
 
+        Usuario usuario = usuarioDAO.findById(2L);
+
+        System.out.println("Usuario encontrado" + usuario.getNome() + " com sucesso!");
+    }
+    private static void salvarUsuario() {
+        UsuarioDao usuarioDAO = new UsuarioDAOImpl(
+                EntityManagerUtil.getManeger()
+        );
+        Usuario usuario = new Usuario();
+
+        usuario.setNome("Rafael");
+        usuario.setLogin("Rafa_Unluck");
+        usuario.setSenha("rafa123456");
+
+        usuarioDAO.save(usuario);
+    }
     private static void deletarUsuario() {
-        UsuarioDao usuarioDAO = new UsuarioDAOImpl(EntityManagerUtil.getManeger());
+        UsuarioDao usuarioDAO = new UsuarioDAOImpl(
+                EntityManagerUtil.getManeger()
+        );
 
         Usuario usuario = usuarioDAO.findById(1L);
-        usuario.setSenha("132451");
 
-        usuarioDAO.update(usuario);
+        usuarioDAO.delete(usuario);
     }
 
     public static void editarUsuario(){

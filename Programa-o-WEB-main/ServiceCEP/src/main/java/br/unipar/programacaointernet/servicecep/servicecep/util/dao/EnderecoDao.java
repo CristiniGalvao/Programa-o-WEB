@@ -10,6 +10,7 @@ public interface EnderecoDao {
     public void update(Endereco endereco);
     public void delete(Endereco endereco);
 
+    public Endereco consultaCep(String cep);
     public Endereco findById(Long id);
     public List<Endereco> findAll();
 }
